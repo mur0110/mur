@@ -1,13 +1,13 @@
-const setpointDuration = .25;
+const interDuration = .15;
 
 const songPath = 'sunsetcruise.mp3';
 
 
-const volArr=[4, 3, 3, 2, 2, 3, 3, 4];
-const speedArr=[2, 3, 3, 4, 4, 3, 3, 2];
+const volArr=[3, 5, 7];
+const speedArr=[3, 5, 7];
 
-const setPointsVol = [.44, .465, .5, .535, .56];
-const setPointsSpeed = [.88, .93, 1, 1.07, 1.12];
+const multVolArr = [.445, .46, .465, .475, .5, .525, .535, .54, .55];
+const multSpeedArr = [.89, .92 ,.93, .95, 1, 1.05, 1.07, 1.08, 1.11];
 
 
 const randomsForVol=[];
@@ -17,8 +17,8 @@ let randomsForVolIter = 0;
 let randomsForSpeedIter = 0;
 
 for (let i=0; i<600; i++){
-    randomsForVol.push(pickAmongFive());
-    randomsForSpeed.push(pickAmongFive());
+    randomsForVol.push(pickAmongNine());
+    randomsForSpeed.push(pickAmongNine());
 }
 
 let presVolIntervalIter = 0;
@@ -32,15 +32,15 @@ function redefineVolInterval(){
 }
 
 function redefineSpeedInterval(){
-    presSpeedInterval = speedArr[presSpeedInterval];
+    presSpeedInterval = speedArr[presSpeedIntervalIter];
 }
 
-function pickAmongFive(){
-    return Math.floor(Math.random() * 5);
+function pickAmongNine(){
+    return Math.floor(Math.random() * 9);
 }
 
 function nextVolIntervalIter(){
-    if (presVolIntervalIter < 7){
+    if (presVolIntervalIter < 2){
         presVolIntervalIter++;
     }
     else{
@@ -49,7 +49,7 @@ function nextVolIntervalIter(){
 }
 
 function nextSpeedIntervalIter(){
-    if (presSpeedIntervalIter < 7){
+    if (presSpeedIntervalIter < 2){
         presSpeedIntervalIter++;
     }
     else{
@@ -62,8 +62,8 @@ function nextSpeedIntervalIter(){
 function runner(){
     const songAudio = new Audio(songPath);
     
-    let randomForVolVal = setPointsVol[randomsForVol[randomsForVolIter]];
-    let randomForSpeedVal = setPointsSpeed[randomsForSpeed[randomsForSpeedIter]];
+    let randomForVolVal = multVolArr[randomsForVol[randomsForVolIter]];
+    let randomForSpeedVal = multSpeedArr[randomsForSpeed[randomsForSpeedIter]];
 
 
 
@@ -86,11 +86,11 @@ function runner(){
               songAudio.volume = randomForVolVal;
               volIntervalIter += volArr[presVolIntervalIter];
               advanceVolume();
-          }, setpointDuration * volInterval * 1000);
+          }, interDuration * volInterval * 1000);
           nextVolIntervalIter();
-          redefineSpeedInterval();
+          redefineVolInterval();
           volInterval = presVolInterval;
-          randomForVolVal = setPointsVol[randomsForVol[randomsForVolIter]];
+          randomForVolVal = multVolArr[randomsForVol[randomsForVolIter]];
           randomsForVolIter++;
     }
 
@@ -99,11 +99,11 @@ function runner(){
               songAudio.playbackRate = randomForSpeedVal;
               speedIntervalIter += speedArr[presSpeedIntervalIter];
               advanceSpeed();
-          }, setpointDuration * speedInterval * 1000);
+          }, interDuration * speedInterval * 1000);
           nextSpeedIntervalIter();
           redefineSpeedInterval();
           speedInterval = presSpeedInterval;
-          randomForSpeedVal = setPointsSpeed[randomsForSpeed[randomsForSpeedIter]];
+          randomForSpeedVal = multSpeedArr[randomsForSpeed[randomsForSpeedIter]];
           randomsForSpeedIter++;
     }
 }

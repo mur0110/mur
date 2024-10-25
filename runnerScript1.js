@@ -6,7 +6,7 @@ const songPath = 'sunsetcruise.mp3';
 const volArr=[3, 5, 7];
 const speedArr=[3, 5, 7];
 
-const multVolArr = [.445, .46, .465, .475, .5, .525, .535, .54, .55];
+const multVolArr = [.445, .46, .465, .475, .5, .525, .535, .54, .555];
 const multSpeedArr = [.89, .92 ,.93, .95, 1, 1.05, 1.07, 1.08, 1.11];
 
 

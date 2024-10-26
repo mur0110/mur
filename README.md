@@ -3,9 +3,7 @@
 ### The idea relies largely on usage of prime number patterns to achieve a neat melodic effect. Here's my favorite song with it: 
 ### https://mur0110.github.io/mur/psasr.html
 
-So while this isn't exactly a more than primitive web design (I've done some cool stuff, though, like for League of Legends), I'm excited about the idea, and also interested in any inputs on design direction. I'm pretty set on keeping it animation free to keep the Javascript music mod snappy, but aside from that, pretty open.
-
-## For more details on implementation:
+## More details on implementation:
 
 ### Generate, independently, modifications of 5, 7, 8, or 11 % on the volume or tempo of a given song interval. 
 

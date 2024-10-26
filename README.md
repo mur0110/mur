@@ -1,5 +1,5 @@
 # mur
-### Attempt at for-Focus Music Remix Script
+### Attempt at for-Focus & Feel Good Music Remix Script
 
 
 So while this isn't exactly a more than primitive web design (I've done some cool stuff, though, like for League of Legends), I'm excited about the idea, and also interested in any inputs on design direction. I'm pretty set on keeping it animation free to keep the Javascript music mod snappy, but aside from that, pretty open.
